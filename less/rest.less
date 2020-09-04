@@ -1,0 +1,102 @@
+// 定位
+.fx(@tan:fixed) {
+    position: @tan;
+}
+.re(@re:relative) {
+    position: @re;
+}
+.ab(@ab:absolute) {
+    position: @ab;
+}
+.left(@size:0) {
+    left: @size;
+}
+.top(@size:0) {
+    top: @size;
+}
+.right(@size:0) {
+    right: @size;
+}
+.bottom(@size:0) {
+    bottom: @size;
+}
+//属性转换
+.display(@dp:none) {
+    display: none;
+}
+//颜色
+.bkg(@color:#00a1e9) {
+    background-color: @color;
+}
+//圆
+.circle(@bor:50%) {
+    border-radius: @bor;
+}
+.circle_sz(@size:50%) {
+    border-top-left-radius: @size;
+}
+.circle_sy(@size:50%) {
+    border-top-right-radius: @size;
+}
+.circle_xz(@size:50%) {
+    border-bottom-left-radius: @size;
+}
+.circle_xy(@size:50%) {
+    border-bottom-right-radius: @size;
+}
+//------------------------------------
+//边框
+.border(@size:1px,@style:solid,@color:#666) {
+    border: @size @style @color;
+}
+.tp(@size:1px,@style:solid,@color:#666) {
+    border-top: @size @style @color;
+}
+.rg(@size:1px,@style:solid,@color:#666) {
+    border-right: @size @style @color;
+}
+.bt(@size:1px,@style:solid,@color:#666) {
+    border-bottom: @size @style @color;
+}
+.lt(@size:1px,@style:solid,@color:#666) {
+    border-left: @size @style @color;
+}
+//------------------------------------
+//动画   平移  旋转   缩放
+.transform_r(@deg:0) {
+    transform: rotate(@deg);
+}
+//平移
+.transform_px(@deg:0) {
+    transform: translateX(@deg);
+}
+.transform_py(@deg:0) {
+    transform: translateY(@deg);
+}
+.transform_pz(@deg:0) {
+    transform: translateZ(@deg);
+}
+//旋转
+.transform_xx(@deg:0) {
+    transform: rotateX(@deg);
+}
+.transform_xy(@deg:0) {
+    transform: rotateY(@deg);
+}
+.transform_xz(@deg:0) {
+    transform: rotateZ(@deg);
+}
+//缩放
+.transform_sx(@deg:0) {
+    transform: scaleX(@deg);
+}
+.transform_sy(@deg:0) {
+    transform: scaleY(@deg);
+}
+.transform_sz(@deg:0) {
+    transform: scaleZ(@deg);
+}
+//动画
+.anima(@name:all, @time:1s, @num:infinite, @play:alternate) {
+    animation: @name @time @num @play;
+}

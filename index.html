@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#222">
+    <title>随机抽奖</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>妖怪名单</h1>
+        <ul class="list" id="list">
+            <li v-for="(item, index) in news" :key="index"  :style="randomColor()">{{index+1}}-{{item.name}}</li>
+        </ul>
+        <ul class="list change">
+            <li v-for="(val, index) in arr" :key="index" v-text="val.name" :style="randomColor()"></li>
+        </ul>
+        <footer>
+            <input type="text" id="figure" placeholder="请输入中奖人数" v-model="num">
+            <button type="button" id="start" @click="chopArr">开始抽奖</button>
+            <button type="button" id="upsetList" @click="chaos">打乱奖池</button>
+            <button type="button" id="reset">重置奖池</button>
+        </footer>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                news: [],
+                timer: null,
+                arr:[],
+                num:1
+            },
+            created() {
+                axios.get('./js/news.json')
+                    .then(res => {
+                        this.news = res.data;
+                    })
+            },
+            methods: {
+                randomColor() {
+                    let a = 0.8;
+                    let r = Math.floor(Math.random() * 255 + 100),
+                        g = Math.floor(Math.random() * 255 + 100),
+                        b = Math.floor(Math.random() * 255 + 100);
+                    return {
+                        background: 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')'
+                    }
+                },
+                randomList() {
+                    return Math.floor(Math.random() * this.news.length);
+                },
+                chopArr() {
+                    clearInterval(this.timer);
+                    this.timer = setInterval(() => {
+                        let newArr = [];
+                        while (this.news.length > 0) {
+                            let leng = this.randomList();
+                            newArr.push(this.news[leng]);
+                            this.news.splice(leng, 1);
+                        }
+                        this.news = newArr;
+                        return this.news;
+                    }, 50)
+                    setTimeout(() => {
+                        let n = this.randomList();
+                        clearInterval(this.timer);
+                        this.arr.push(this.news[n]);
+                        this.news.splice(n,this.num);
+                        if (this.arr.length>this.num) {
+                            this.arr.splice(0,this.num);
+                        }
+                    }, 500)
+                },
+                chaos(){
+                    let newArr = [];
+                        while (this.news.length > 0) {
+                            let leng = this.randomList();
+                            newArr.push(this.news[leng]);
+                            this.news.splice(leng, 1);
+                        }
+                        this.news = newArr;
+                        return this.news;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

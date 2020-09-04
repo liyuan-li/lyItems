@@ -1,0 +1,81 @@
+@charset "utf-8";
+@import "./rest.less";
+
+body {
+    font-family: "微软雅黑";
+    background: url(../images/bg01.jpg) no-repeat;
+    background-size: cover;
+    h1 {
+        width: 150px;
+        padding: 8px;
+        margin: 0 auto;
+        font-size: 28px;
+        color: rgba(248, 4, 4, .6);
+        background: rgba(255, 255, 255, .4);
+        margin-top: 20px;
+        text-align: center;
+        border-radius: 5px;
+        line-height: 28px;
+    }
+    .list {
+        display: flex;
+        justify-content: space-evenly;
+        flex-flow: row wrap;
+        width: 75%;
+        padding-bottom: 20px;
+        margin: 20px auto;
+        border: 2px solid #eee;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, .4);
+        li {
+            width: 120px;
+            padding: 10px 0;
+            margin: 10px 5px;
+            border-radius: 4px;
+            font-size: 16px;
+            // font-weight: bold;
+            color: #505050;
+            text-align: center;
+            transition: all .7s;
+        }
+        li.selected {
+            transform: scale(2);//rotate(-360deg) 
+        }
+    }
+    .change {
+        padding: 0;
+    }
+    footer {
+        width: 75%;
+        margin: 20px auto;
+        border-radius: 5px;
+        text-align: center;
+        input {
+            width: 150px;
+            padding: 10px 0;
+            border-radius: 5px;
+            border: 1px solid rgb(245, 121, 121);
+            outline: none;
+            text-align: center;
+            color: royalblue;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, .4);
+        }
+        button {
+            padding: 10px;
+            margin: 10px 10px 0;
+            border: 0;
+            outline: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgb(245, 121, 121);
+            background-color: rgba(255, 255, 255, .4);
+            cursor: pointer;
+        }
+        .forbid {
+            background-color: rgb(100, 100, 100);
+            color: gray;
+        }
+    }
+}
